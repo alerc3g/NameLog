@@ -1,3 +1,11 @@
+data = []
+
+newdata = []
+
+NewEntryCreated = True
+
+print("Please create your profile for use!")
+# Where the actual program runs
 def MenuFunction():
     NewEntryCreated = False
     print("Hello, " + str(data[0][0]) + " and welcome to the program, what would you like to do?")
@@ -31,17 +39,7 @@ def MenuFunction():
                 menu = input()
                 continue
 
-#defined data
-
-data = []
-
-NewEntryCreated = True
-
-print("Please create your profile for use!")
-
 while NewEntryCreated:
-    newdata = []
-
 
     # Classes for code function
 
