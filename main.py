@@ -1,3 +1,16 @@
+# Version 0.4 Changes -
+# 1. Added ability to view entries in a list
+# 2. Added range to the age checks
+# 3. Added ability to delete only certain entries
+# 4. General cleanup
+
+# PLANNED CHANGES -
+# 1. Display only certain entries or all entries
+# 2. Delete only certain entries or all entries
+# 3. Write to CSV
+
+
+
 data = []
 
 newdata = []
@@ -5,35 +18,78 @@ newdata = []
 NewEntryCreated = True
 
 print("Please create your profile for use!")
+
 # Where the actual program runs
 def MenuFunction():
     NewEntryCreated = False
     print("Hello, " + str(data[0][0]) + " and welcome to the program, what would you like to do?")
     print("TYPE C TO CREATE A NEW ENTRY")
-    print("TYPE D TO DELETE YOUR PREVIOUS ENTRY")
+    print("TYPE P TO DISPLAY YOUR CURRENT DATA")
+    print("TYPE D TO DELETE AN ENTRY")
     print("TYPE N TO LEAVE THE SOFTWARE")
-    print("Your current data set is " + str(data))
     menu = input()
     while menu:
         match menu:
             case "C":
                 print("Please follow the instructions and create a new entry!")
+                print("If you want to stop this entry, just type 'N' during the creation process")
                 NewEntryCreated = True
                 break
             case "D":
                 if data == []:
-                    print("You can't delete anything!")
+                    print("There is no data to be deleted! Please type C to create a new data set")
                     print("Your current data set is " + str(data))
                     menu = input()
                 else:
-                    print("Deleted!")
-                    data.pop([0][0])
-                    print("Your current data set is " + str(data))
-                    menu = input()
+                    print("Please enter the number of the data set you want deleted!")
+                    print("If you want to stop the deletion, please type 'N' to stop.")
+                    remove = input()
+                    while remove:
+                        if remove == "N":
+                            print("Successfully ended!")
+                            menu = input()
+                            break
+                        elif remove.isalpha():
+                            print("Please enter a valid number")
+                            remove = input()
+                            continue
+                        elif remove.isnumeric():
+                            x = int(remove)
+                            if len(data) < x:
+                                print("Please enter a valid number")
+                                remove = input()
+                                continue
+                            else:
+                                delete = int(x) - 1
+                                data.pop([delete][0])
+                                print("Removed!")
+                                print("Your current data set is " + str(data))
+                                menu = input()
+                                break
                 continue
+            case "P":
+                print("Certainly! Here are all your records!")
+                if data == []:
+                    print("There is no data to print! Please type C to create a new data set")
+                    menu = input()
+                    continue
+                else:
+                    for x in data:
+                        print(x)
+                    print("Here are all your entries!")
+                    menu = input()
+                    continue
             case "N":
-                print("Very well, goodbye!")
-                quit()
+                print("Are you sure you'd like to exist the program? Type 1 if you would, type 0 if you wouldn't")
+                exitinput = input()
+                match exitinput:
+                    case "1":
+                        print("Goodbye!")
+                        quit()
+                    case "0":
+                        print("Okay!")
+                        menu = input()
+                        continue
             case default:
                 print("Please type either C, D, or N")
                 menu = input()
@@ -51,6 +107,14 @@ while NewEntryCreated:
                 print("please enter a valid name")
                 name = input()
                 continue
+            elif name == "N":
+                if data == []:
+                    print("We can't end it if there are no entries")
+                    name = input()
+                    continue
+                else:
+                    print("Successfully ended!")
+                    MenuFunction()
             else:
                 print("Hello " + name)
                 break
@@ -60,13 +124,27 @@ while NewEntryCreated:
         print("How old are you?")
         age = input()
         while age:
-            if age.isnumeric():
-                print("So you're " + age + "?")
-                break
-            else:
+            if age == "N":
+                if data == []:
+                    print("We can't end it if there are no entries")
+                    age = input()
+                    continue
+                else:
+                    print("Successfully ended!")
+                    MenuFunction()
+            elif age.isalpha():
                 print("Please enter a valid age")
                 age = input()
                 continue
+            elif age.isnumeric():
+                z = int(age)
+                if z < 101:
+                    print("So you're " + str(z) + "?")
+                    break
+                else:
+                    print("Please enter a value in the range of 0 - 100")
+                    age = input()
+                    continue
 
 
     class occFunction:
@@ -77,6 +155,14 @@ while NewEntryCreated:
                 print("Please input a valid occupation")
                 occ = input()
                 continue
+            elif occ == "N":
+                if data == []:
+                    print("We can't end it if there are no entries")
+                    occ = input()
+                    continue
+                else:
+                    print("Successfully ended!")
+                    MenuFunction()
             else:
                 break
 
@@ -88,19 +174,16 @@ while NewEntryCreated:
     newdata = [name, age, occ]
 
     data.append(newdata)
-    print(newdata)
 
 
     class confFunction:
         while data:
-            print(
-                "So just to confirm, your name is " + name + ". You're " + age + " years old and your occupation is " + occ)
-            print("is that correct?")
+            print("Just to confirm this is your data set? " + str(newdata))
+            print("is that correct? Please enter Yes or No")
             confirm = input().upper()
             match confirm:
                 case "YES":
                     print("Perfect, thank you!")
-                    print(newdata)
                     MenuFunction()
                     break
                 case "NO":
@@ -128,10 +211,16 @@ while NewEntryCreated:
                                 age = input()
                                 while age:
                                     if age.isnumeric():
-                                        print("Thank you " + name + "! Changes have been applied")
-                                        newdata[1] = age
-                                        print(newdata)
-                                        print("Thank you, if you want any other changes made please type either 'Name', 'Age' or 'Job'")
+                                        z = int(age)
+                                        if z < 101:
+                                            print("Thank you " + name + "! Changes have been applied")
+                                            newdata[1] = age
+                                            print(newdata)
+                                            print("Thank you, if you want any other changes made please type either 'Name', 'Age' or 'Job'")
+                                        else:
+                                            print("Please enter a value in the range of 0 - 100")
+                                            age = input()
+                                            continue
                                         break
                                     else:
                                         print("Please enter a valid age")
