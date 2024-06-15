@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9f35087a-8fc1-434f-b665-6d70e5f12b1a" name="Changes" comment="v0.3 - Added Menu, delete data, ability to create more than one profile. Next planned change is ability to select which profile to delete + write to CSV" />
+    <list default="true" id="9f35087a-8fc1-434f-b665-6d70e5f12b1a" name="Changes" comment="v0.3 - Added Menu, delete data, ability to create more than one profile. Next planned change is ability to select which profile to delete + write to CSV">
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
