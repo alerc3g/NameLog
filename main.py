@@ -1,16 +1,3 @@
-# Version 0.4 Changes -
-# 1. Added ability to view entries in a list
-# 2. Added range to the age checks
-# 3. Added ability to delete only certain entries
-# 4. General cleanup
-
-# PLANNED CHANGES -
-# 1. Display only certain entries or all entries
-# 2. Delete only certain entries or all entries
-# 3. Write to CSV
-
-
-
 data = []
 
 newdata = []
@@ -35,19 +22,43 @@ def MenuFunction():
                 print("If you want to stop this entry, just type 'N' during the creation process")
                 NewEntryCreated = True
                 break
+
             case "D":
-                if data == []:
+                if not data:
                     print("There is no data to be deleted! Please type C to create a new data set")
                     print("Your current data set is " + str(data))
                     menu = input()
                 else:
                     print("Please enter the number of the data set you want deleted!")
+                    print("If you want to remove all data sets, please type 'All'")
                     print("If you want to stop the deletion, please type 'N' to stop.")
                     remove = input()
                     while remove:
                         if remove == "N":
                             print("Successfully ended!")
                             menu = input()
+                            break
+                        elif remove == "All":
+                            print("Are you sure you want to delete the data?")
+                            print("CAUTION - This is an action you can't undo")
+                            print("Please enter 'Y' or 'N'")
+                            deleteall = input()
+                            while deleteall:
+                                match deleteall:
+                                    case "Y":
+                                        data.clear()
+                                        print("Successfully deleted all data!")
+                                        menu = input()
+                                        break
+                                    case "N":
+                                        print("Okay!")
+                                        print("PROCESS ENDED")
+                                        menu = input()
+                                        break
+                                    case default:
+                                        print("Please enter 'Y' or 'N'.")
+                                        deleteall = input()
+                                        continue
                             break
                         elif remove.isalpha():
                             print("Please enter a valid number")
@@ -67,18 +78,40 @@ def MenuFunction():
                                 menu = input()
                                 break
                 continue
+
             case "P":
                 print("Certainly! Here are all your records!")
-                if data == []:
+                if not data:
                     print("There is no data to print! Please type C to create a new data set")
                     menu = input()
                     continue
                 else:
+                    z = 0
                     for x in data:
-                        print(x)
-                    print("Here are all your entries!")
+                        z += 1
+                        print(f"({z}) - {x}")
+                    print("Is there a certain entry you'd like to expand?")
+                    print("Please type the number")
+                    entry = input()
+                    if entry == "N":
+                        print("Successfully ended task!")
+                        menu = input()
+                        continue
+                    elif entry.isalpha():
+                        print("Please enter a valid number")
+                        entry = input()
+                        continue
+                    elif int(entry) == z:
+                        print("Certainly!")
+                        print("Name " + str(x[0]))
+                        print("Age " + str(x[1]))
+                        print("Occupation " + str(x[2]))
+                        print("Please select C or D to create or delete data")
+                        menu = input()
+                        continue
                     menu = input()
                     continue
+
             case "N":
                 print("Are you sure you'd like to exist the program? Type 1 if you would, type 0 if you wouldn't")
                 exitinput = input()
@@ -108,7 +141,7 @@ while NewEntryCreated:
                 name = input()
                 continue
             elif name == "N":
-                if data == []:
+                if not data:
                     print("We can't end it if there are no entries")
                     name = input()
                     continue
@@ -125,7 +158,7 @@ while NewEntryCreated:
         age = input()
         while age:
             if age == "N":
-                if data == []:
+                if not data:
                     print("We can't end it if there are no entries")
                     age = input()
                     continue
@@ -156,7 +189,7 @@ while NewEntryCreated:
                 occ = input()
                 continue
             elif occ == "N":
-                if data == []:
+                if not data:
                     print("We can't end it if there are no entries")
                     occ = input()
                     continue
