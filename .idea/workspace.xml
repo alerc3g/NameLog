@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9f35087a-8fc1-434f-b665-6d70e5f12b1a" name="Changes" comment="v0.31 - fixed code to make more presentable">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-    </list>
+    <list default="true" id="9f35087a-8fc1-434f-b665-6d70e5f12b1a" name="Changes" comment="v0.4 - View internal comments" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -99,7 +96,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718429278242</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="v0.4 - View internal comments">
+      <option name="closed" value="true" />
+      <created>1718489443418</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1718489443418</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -118,7 +123,8 @@
     <MESSAGE value="v0.2 - Added data verification, changed case settings, planning to create menu + ability to delete data" />
     <MESSAGE value="v0.3 - Added Menu, delete data, ability to create more than one profile. Next planned change is ability to select which profile to delete + write to CSV" />
     <MESSAGE value="v0.31 - fixed code to make more presentable" />
-    <option name="LAST_COMMIT_MESSAGE" value="v0.31 - fixed code to make more presentable" />
+    <MESSAGE value="v0.4 - View internal comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="v0.4 - View internal comments" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
